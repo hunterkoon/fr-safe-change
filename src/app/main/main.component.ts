@@ -1,3 +1,6 @@
+import {
+  trigger, transition, style, animate, query, group
+} from '@angular/animations';
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../layout/header/header.component';
 import { FooterComponent } from '../layout/footer/footer.component';
@@ -5,10 +8,31 @@ import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-main',
-  imports: [HeaderComponent,FooterComponent,RouterOutlet],
+  standalone: true,
+  imports: [HeaderComponent, FooterComponent, RouterOutlet],
   templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  styleUrls: ['./main.component.scss'],
+  animations: [
+    trigger('routeAnimations', [
+      transition('* <=> *', [
+        query(':enter, :leave', [
+          style({ position: 'absolute', width: '100%', opacity: 0 })
+        ], { optional: true }),
+        group([
+          query(':leave', [
+            animate('200ms ease', style({ opacity: 0, transform: 'translateX(-100%)' }))
+          ], { optional: true }),
+          query(':enter', [
+            style({ transform: 'translateX(100%)', opacity: 0 }),
+            animate('200ms ease', style({ transform: 'translateX(0)', opacity: 1 }))
+          ], { optional: true })
+        ])
+      ])
+    ])
+  ]
 })
 export class MainComponent {
-
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet?.activatedRouteData?.['animation'];
+  }
 }

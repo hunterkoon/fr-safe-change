@@ -15,3 +15,9 @@ html, body {
   margin: 0;     /* Remove margens padrão */
   padding: 0;    /* Remove espaçamentos padrão */
 }
+
+main {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}

@@ -7,9 +7,9 @@ export const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    children:[
-      {path: '', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
-    ]
+    children: [
+      { path: '', component: LoginComponent, data: { animation: 'LoginPage' } },
+      { path: 'register', component: RegisterComponent,data: { animation: 'RegisterPage' }  },
+    ],
   },
 ];
