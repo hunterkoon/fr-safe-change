@@ -1,0 +1,1 @@
+  export const LOGIN_IMG : string = "assets/images/home.png"

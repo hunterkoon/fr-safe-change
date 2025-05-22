@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-presentation',
@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './presentation.component.scss',
 })
 export class PresentationComponent {
-  imageSource = 'assets/images/home.png';
+  @Input() imageSource : string = "";
 }
