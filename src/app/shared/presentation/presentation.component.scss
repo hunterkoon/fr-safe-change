@@ -1,5 +1,9 @@
-.body-img {
+img {
+  width: 100%;
+  border-radius: 35px;
+  opacity: 0.75;
+}
+
+.mn-login {
   display: flex;
-  padding: 1rem;
-  justify-content: center;
 }
