@@ -2,5 +2,38 @@
   <div class="column-2">
     <app-presentation [imageSource]="imageSourcePage"></app-presentation>
   </div>
-  <div class="column-2">receive a component</div>
+
+  <div class="column-2">
+    <div class="in-login">
+      <div class="in-inside">
+        <h1 style="color: #0B2F64; font-size: 32px;">Trocas entre pessoas, sem perrengue.</h1>
+        <h1 style="font-weight: 400; color: #0B2F64;">Entrar</h1>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <app-input-common
+            id="email"
+            type="email"
+            placeholder="Digite seu E-mail"
+            formControlName="emailClient"
+          ></app-input-common>
+          <button
+            type="submit"
+            [disabled]="loginForm.get('emailClient')?.invalid"
+          >
+            OK
+          </button>
+        </form>
+        <div
+          class="error"
+          *ngIf="
+            loginForm.get('emailClient')?.invalid &&
+            loginForm.get('emailClient')?.touched
+          "
+        >
+          <span *ngIf="loginForm.get('emailClient')?.errors?.['email']"
+            >Formato de e-mail inválido.</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

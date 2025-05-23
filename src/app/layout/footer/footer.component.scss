@@ -1,24 +1,27 @@
 .mn-footer {
-  display: block;
-  align-content: center;
-  justify-items: center;
-  width: 100vw;
-  height: 10vh;
-  margin-bottom: 0;
-  position: relative;
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 2rem;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
 }
-.mn-footer p {
-  font-size: 0.85rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-weight: lighter;
-  font-style: italic;
-  color: grey;
+
+.legal-text {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+  text-align: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
 .copyright {
-  font-size: 0.85rem !important;
-  font-weight: bold !important;
-  color: black !important;
+  font-weight: 500;
+  color: #333;
 }
