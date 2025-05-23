@@ -1,0 +1,27 @@
+.mn-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 2rem;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+}
+
+.legal-text {
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0;
+  text-align: center;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.copyright {
+  font-weight: 500;
+  color: #333;
+}

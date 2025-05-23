@@ -1,0 +1,27 @@
+.mn-btn-register {
+  display: flex;
+  border: 1px solid #3580e4;
+  border-radius: 1rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+  height: 52px;
+  width: 152px;
+  align-items: center;
+  justify-content: center;
+  transition: border 0.3s ease;
+}
+
+.mn-btn-register > a {
+  font-size: medium;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+}
+
+.mn-btn-register:hover {
+  border: 1px solid white;
+  font-size: medium;
+  color: #3580e4;
+  font-weight: 700;
+  text-decoration: none;
+}

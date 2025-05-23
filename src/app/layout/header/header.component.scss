@@ -1,0 +1,47 @@
+.mn-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 5.75rem;
+  width: 100vw;
+}
+
+.header-division {
+  display: flex;
+  justify-self: center;
+  width: 98vw;
+  height: 3px;
+  border-bottom: solid 1px #3380e4;
+  box-shadow: 4px 4px 4px #0b2f642b;
+}
+
+.header-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.header-menu > span {
+  display: flex;
+  padding-left: 1rem;
+  align-items: center;
+}
+
+.header-menu > span > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.header-menu > span > a:hover {
+  text-decoration: none;
+  font-size: medium;
+  color: #3580e4;
+}
+
+.logo {
+  padding-left: 3rem;
+  width: 180px;
+}
+
+.header-menu-itens {
+  padding-right: 3rem;
+}
