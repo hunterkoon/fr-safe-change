@@ -1,12 +1,8 @@
 .main-component{
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
-  overflow-x: hidden
-  
+    // overflow-x: hidden;
 }
+.content{
+  min-height: auto;
 
-.content {
-  flex: 1; 
-  padding: 1rem;
 }
