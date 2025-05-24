@@ -4,10 +4,11 @@ import { PresentationComponent } from '../../../shared/presentation/presentation
 import { LOGIN_IMG } from '../../../shared/constants/constants';
 import { InputCommonComponent } from '../../../shared/inputs/input-common/input-common.component';
 import { FormControl, FormGroup,  ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule, PresentationComponent, InputCommonComponent, ReactiveFormsModule],
+  imports: [CommonModule, PresentationComponent, InputCommonComponent, ReactiveFormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true
