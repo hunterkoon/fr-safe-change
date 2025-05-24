@@ -32,7 +32,7 @@
 
 .header-menu > span > a:hover {
   text-decoration: none;
-  font-size: medium;
+  font-size: 20px;
   color: #3580e4;
 }
 
@@ -43,4 +43,104 @@
 
 .header-menu-itens {
   padding-right: 3rem;
+}
+
+.header-link {
+  font-size: 20px;
+}
+
+/* Menu hambúrguer responsivo */
+.hamburger {
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 15px;
+  height: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+  position: relative;
+  z-index: 3;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background-color: #3580e4;
+  border-radius: 2px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  top: 10px;
+}
+
+.hamburger span:nth-child(3) {
+  top: 20px;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 10px;
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 10px;
+}
+
+.header-menu.open {
+  flex-direction: column;
+  height: 50vh;
+  position: absolute;
+  margin: 0;
+  left: 0;
+  top: 0;
+  background-color: #dbe6f5;
+  align-items: center;
+  z-index: 1;
+  justify-content: space-around;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 4px #0b2f642b;
+  align-items: start;
+}
+
+/* Exibir somente no mobile */
+@media (max-width: 768px) {
+  .header-menu {
+    display: none;
+  }
+
+  .header-menu.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .header-left {
+    width: 100vw;
+    align-content: end;
+    justify-content: space-between;
+  }
+
+  .header-left-group {
+    display: flex;
+    width: 100vw;
+    gap: 8%;
+    align-items: center;
+  }
 }

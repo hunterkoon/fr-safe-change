@@ -7,3 +7,9 @@
   background-size: cover;
   opacity: 75%;
 }
+
+@media (max-width: 768px) {
+  .mn-presentation {
+    height: 30vh;
+  }
+}

@@ -1,20 +1,33 @@
 <div class="mn-header">
-  <a routerLink="" >
-    <img src="assets/images/logo-safe-change.svg" alt="logotipo" class="logo" />
-  </a>
+  <div class="header-left">
+    <div class="header-left-group">
+      <div #hamburguer [class.open]="menuOpen" class="hamburger" (click)="menuOpen = !menuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <a routerLink="">
+        <img
+          src="assets/images/logo-safe-change.svg"
+          alt="logotipo"
+          class="logo"
+        />
+      </a>
+    </div>
+  </div>
   <div class="header-menu-itens">
     <nav class="header-menu-nav">
-      <ul class="header-menu">
+      <ul #menu class="header-menu" [class.open]="menuOpen">
         <span>
-          <a href="/">rastrear troca</a>
+          <a class="header-link" routerLink="/" (click)="menuOpen = false">Rastrear troca</a>
         </span>
         <span>
-          <a href="/">ajuda</a>
+          <a class="header-link" routerLink="/" (click)="menuOpen = false">Ajuda</a>
         </span>
         <span>
-          <a href="/">quem somos?</a>
+          <a class="header-link" routerLink="/" (click)="menuOpen = false">Quem somos?</a>
         </span>
-        <span>
+        <span (click)="menuOpen = false">
           <app-register></app-register>
         </span>
       </ul>
