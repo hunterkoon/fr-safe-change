@@ -45,6 +45,58 @@
   padding-right: 3rem;
 }
 
-.header-link{
+.header-link {
   font-size: 20px;
+}
+
+/* Menu hambúrguer responsivo */
+.hamburger {
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.hamburger span {
+  z-index: 3;
+  height: 4px;
+  background-color: #3580e4;
+  margin: 3px 0;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.header-menu.open {
+  flex-direction: column;
+  height: 50vh;
+  position: absolute;
+  margin: 0;
+  left: 0;
+  top: 0;
+  background-color: #dbe6f5;
+  align-items: center;
+  z-index: 1;
+  justify-content: space-around;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 4px 4px 4px #0b2f642b;
+}
+
+/* Exibir somente no mobile */
+@media (max-width: 768px) {
+  .header-menu {
+    display: none;
+  }
+
+  .header-menu.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex;
+  }
 }

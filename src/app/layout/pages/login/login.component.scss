@@ -73,3 +73,31 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+  .mn-login {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 1rem;
+  }
+
+  .login-legal-text {
+    grid-column: auto;
+    grid-row: auto;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .login-form {
+    padding: 1.5rem;
+  }
+
+  .login-insurance {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .login-insurance > div {
+    justify-content: center;
+  }
+}
