@@ -8,4 +8,9 @@ import { Component, Input } from '@angular/core';
 })
 export class PresentationComponent {
   @Input() imageSource : string = "";
+
+  //   ngOnInit(): void {
+  //     this.imageSource = 'url(\''  + this.imageSource + '\')'
+  //     console.log('URL da imagem recebida pelo componente:', this.imageSource);
+  // }
 }
