@@ -1,7 +1,7 @@
 <div class="mn-header">
   <div class="header-left">
-    <div style="display: flex; align-items: center">
-      <div class="hamburger" (click)="menuOpen = !menuOpen">
+    <div class="header-left-group">
+      <div #hamburguer [class.open]="menuOpen" class="hamburger" (click)="menuOpen = !menuOpen">
         <span></span>
         <span></span>
         <span></span>
@@ -17,7 +17,7 @@
   </div>
   <div class="header-menu-itens">
     <nav class="header-menu-nav">
-      <ul class="header-menu" [class.open]="menuOpen">
+      <ul #menu class="header-menu" [class.open]="menuOpen">
         <span>
           <a class="header-link" routerLink="/" (click)="menuOpen = false">Rastrear troca</a>
         </span>
