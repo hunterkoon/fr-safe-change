@@ -1,3 +1,17 @@
+.login-button {
+  background-color: #3580e4;
+  border: none;
+  width: 59px;
+  color: #ffffff;
+  font-size: larger;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-button:active {
+  background-color: #0B2F64;
+}
+
 .error {
   padding-top: 1rem;
   color: red;
@@ -76,8 +90,8 @@
 
 @media (max-width: 768px) {
   .mn-login {
-    grid-template-columns: 1fr;
-    gap: 20px;
+    display: flex;
+    flex-direction: column;
     padding: 1rem;
   }
 
@@ -92,6 +106,13 @@
     padding: 1.5rem;
   }
 
+  .form-login {
+    display: inline-flex;
+    padding-top: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
   .login-insurance {
     flex-direction: column;
     gap: 20px;
@@ -99,5 +120,9 @@
 
   .login-insurance > div {
     justify-content: center;
+  }
+
+  .input-login {
+    width: 70%;
   }
 }

@@ -12,3 +12,10 @@
   border-radius: 0.4rem;
   border: 5px solid #3580e4;
 }
+
+@media (max-width: 768px) {
+  .in-common {
+    width: 100%;
+    height: 2.54rem;
+  }
+}
