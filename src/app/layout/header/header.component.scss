@@ -32,7 +32,7 @@
 
 .header-menu > span > a:hover {
   text-decoration: none;
-  font-size: medium;
+  font-size: 20px;
   color: #3580e4;
 }
 
@@ -43,4 +43,8 @@
 
 .header-menu-itens {
   padding-right: 3rem;
+}
+
+.header-link{
+  font-size: 20px;
 }
