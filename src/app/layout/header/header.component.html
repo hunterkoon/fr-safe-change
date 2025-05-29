@@ -1,37 +1,50 @@
-<div class="mn-header">
-  <div class="header-left">
-    <div class="header-left-group">
-      <div #hamburguer [class.open]="menuOpen" class="hamburger" (click)="menuOpen = !menuOpen">
-        <span></span>
-        <span></span>
-        <span></span>
+<header>
+  <main class="mn-header">
+    <section class="header-left">
+      <div class="header-left-group">
+        <div
+          #hamburguer
+          [class.open]="menuOpen"
+          class="hamburger"
+          (click)="menuOpen = !menuOpen"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <a routerLink="">
+          <img
+            src="assets/images/logo-safe-change.svg"
+            alt="logotipo"
+            class="logo"
+          />
+        </a>
       </div>
-      <a routerLink="">
-        <img
-          src="assets/images/logo-safe-change.svg"
-          alt="logotipo"
-          class="logo"
-        />
-      </a>
+    </section>
+    <div class="header-menu-itens">
+      <nav class="header-menu-nav">
+        <ul #menu class="header-menu" [class.open]="menuOpen">
+          <span>
+            <a class="header-link" routerLink="/" (click)="menuOpen = false"
+              >Rastrear troca</a
+            >
+          </span>
+          <span>
+            <a class="header-link" routerLink="/" (click)="menuOpen = false"
+              >Ajuda</a
+            >
+          </span>
+          <span>
+            <a class="header-link" routerLink="/" (click)="menuOpen = false"
+              >Quem somos?</a
+            >
+          </span>
+          <span (click)="menuOpen = false">
+            <app-register></app-register>
+          </span>
+        </ul>
+      </nav>
     </div>
-  </div>
-  <div class="header-menu-itens">
-    <nav class="header-menu-nav">
-      <ul #menu class="header-menu" [class.open]="menuOpen">
-        <span>
-          <a class="header-link" routerLink="/" (click)="menuOpen = false">Rastrear troca</a>
-        </span>
-        <span>
-          <a class="header-link" routerLink="/" (click)="menuOpen = false">Ajuda</a>
-        </span>
-        <span>
-          <a class="header-link" routerLink="/" (click)="menuOpen = false">Quem somos?</a>
-        </span>
-        <span (click)="menuOpen = false">
-          <app-register></app-register>
-        </span>
-      </ul>
-    </nav>
-  </div>
-</div>
-<div class="header-division"></div>
+  </main>
+  <div class="header-division"></div>
+</header>

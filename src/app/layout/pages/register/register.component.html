@@ -1,6 +1,67 @@
-<div class="mn-body">
-  <div class="column-2">
+<main class="mn-register">
+  <section class="register-presentation">
     <app-presentation [imageSource]="imageSourcePage"></app-presentation>
-  </div>
-  <div class="column-2">receive a component</div>
-</div>
+  </section>
+  <section class="register-content">
+    <div class="register-form">
+      <div class="register-inside-form">
+        <h1
+          class="text-enter-register"
+          style="color: #0b2f64; font-size: 2.375rem"
+        >
+          Registre-se
+        </h1>
+
+        <form
+          class="form-register"
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <app-input-common
+            class="input-register"
+            id="email"
+            type="email"
+            placeholder="Digite seu E-mail"
+            formControlName="emailClient"
+          ></app-input-common>
+          <app-input-common
+            class="input-register"
+            id="name"
+            type="text"
+            placeholder="Nome Completo"
+            formControlName="completeName"
+          ></app-input-common>
+
+          <span *ngIf="isCpfInvalid || lenghtCpfIsMin">Cpf inválido!</span>
+          <app-input-common
+            class="input-register"
+            [ngClass]="{
+              'input-register-valid': !isCpfInvalid && lenghtCpfIsMax
+            }"
+            id="document"
+            type="text"
+            placeholder="CPF"
+            formControlName="document"
+            mask="000.000.000-00"
+          ></app-input-common>
+          
+          <app-input-common
+            class="input-register"
+            id="celphone"
+            type="text"
+            placeholder="(11) Celular"
+            formControlName="celphone"
+          ></app-input-common>
+
+          <button
+            class="register-button"
+            type="submit"
+            [disabled]="registerForm.get('emailClient')?.invalid"
+          >
+            OK
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>

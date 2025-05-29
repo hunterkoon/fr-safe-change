@@ -30,7 +30,7 @@ import { RouterOutlet } from '@angular/router';
             ':leave',
             [
               animate(
-                '200ms ease',
+                '100ms ease',
                 style({ opacity: 0, transform: 'translateX(-100%)' })
               ),
             ],
@@ -41,7 +41,7 @@ import { RouterOutlet } from '@angular/router';
             [
               style({ transform: 'translateX(100%)', opacity: 0 }),
               animate(
-                '200ms ease',
+                '100ms ease',
                 style({ transform: 'translateX(0)', opacity: 1 })
               ),
             ],

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PresentationComponent } from '../../../shared/presentation/presentation.component';
-import { LOGIN_IMG } from '../../../shared/constants/constants';
+import { LOGIN_IMG } from '../../../shared/utils/constants';
 import { InputCommonComponent } from '../../../shared/inputs/input-common/input-common.component';
 import { FormControl, FormGroup,  ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';

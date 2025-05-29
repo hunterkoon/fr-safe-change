@@ -1,7 +1,7 @@
-<div class="main-component">
-  <app-header></app-header>
-  <main class="content" [@routeAnimations]="prepareRoute(outlet)">
+<main class="main-component">
+  <div class="content" [@routeAnimations]="prepareRoute(outlet)">
+    <app-header></app-header>
     <router-outlet #outlet="outlet"></router-outlet>
-  </main>
-  <app-footer></app-footer>
-</div>
+    <app-footer></app-footer>
+  </div>
+</main>

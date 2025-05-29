@@ -1,11 +1,136 @@
-.mn-body {
+.register-button:active {
+  background-color: #0b2f64;
+}
+
+.input-register-valid {
+  opacity: 80%;
+  background-color: aquamarine
+}
+
+.register-button {
+  background-color: #3580e4;
+  border: none;
+  width: 59px;
+  height: 39px;
+  color: #ffffff;
+  font-size: larger;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.error {
+  padding-top: 1rem;
+  color: red;
+}
+
+.mn-register {
   display: grid;
-  grid-template-columns: 1fr 1fr; 
-  gap: 20px;
-  padding: 20px;
+  gap: 30px;
+  grid-template-columns: 1.75fr 1fr;
+  padding: 1.5rem;
+  align-content: center;
 }
 
-.column-2{
-  background-color: grey
+.register-form {
+  background-color: #dbe6f5;
+  border-radius: 1rem;
+  box-shadow: 8px 8px 4px #0411242b;
+  padding: 2rem;
+  height: 100%;
 }
 
+.input-register {
+  display: flex;
+  padding-top: 0.5rem;
+}
+
+.text-enter-register {
+  margin: 0;
+}
+
+.form-register {
+  display: block;
+  padding-top: 0.5rem;
+}
+
+.register-legal-text {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  padding: 2rem;
+  text-align: left;
+}
+
+.register-legal-text p {
+  padding-right: 2rem;
+  text-align: left;
+}
+
+.register-img-icon {
+  width: 1.875rem;
+  height: 1.875rem;
+  margin: 0;
+}
+
+.register-insurance {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.register-insurance > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.register-insurance > div > p {
+  font-size: medium;
+}
+
+.register-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .mn-register {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .register-legal-text {
+    grid-column: auto;
+    grid-row: auto;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .register-form {
+    padding: 1.5rem;
+  }
+
+  .form-register {
+    display: inline-flex;
+    padding-top: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .register-insurance {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .register-insurance > div {
+    justify-content: center;
+  }
+
+  .input-register {
+    width: 70%;
+  }
+}

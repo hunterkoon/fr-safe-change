@@ -1,4 +1,5 @@
-<section class="mn-login">
+
+<main class="mn-login">
   <section class="login-presentation">
     <app-presentation [imageSource]="imageSourcePage"></app-presentation>
   </section>
@@ -35,6 +36,7 @@
           </button>
         </form>
         <div
+          style="position: absolute; display: flex; padding-top: 0.6rem;"
           class="error"
           *ngIf="
             loginForm.get('emailClient')?.invalid &&
@@ -60,24 +62,24 @@
         segurança, transparência e idoneidade durante todo o processo...
         <a routerLink="">Ler mais</a>
       </p>
-      <section class="login-insurance">
-        <div>
-          <img
-            class="login-img-icon"
-            src="assets/images/secure-icon-green.png"
-            alt=""
-          />
-          <p>Transação segura</p>
-        </div>
-        <div>
-          <img
-            class="login-img-icon"
-            src="assets/images/secure-icon-blue.png"
-            alt=""
-          />
-          <p>Garantia de serviço</p>
-        </div>
-      </section>
+    </section>
+    <section class="login-insurance">
+      <div>
+        <img
+          class="login-img-icon"
+          src="assets/images/secure-icon-green.png"
+          alt=""
+        />
+        <p>Transação segura</p>
+      </div>
+      <div>
+        <img
+          class="login-img-icon"
+          src="assets/images/secure-icon-blue.png"
+          alt=""
+        />
+        <p>Garantia de serviço</p>
+      </div>
     </section>
   </section>
-</section>
+</main>
