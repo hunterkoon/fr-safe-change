@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
@@ -6,7 +7,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 @Component({
   selector: 'app-input-common',
   standalone: true,
-  imports: [NgxMaskDirective],
+  imports: [NgxMaskDirective, CommonModule],
   templateUrl: './input-common.component.html',
   styleUrl: './input-common.component.scss',
   providers: [
@@ -24,6 +25,7 @@ export class InputCommonComponent implements ControlValueAccessor {
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() mask: string = '';
+  @Input() classD: any = null;
 
   value: string = '';
   isDisabled = false;
@@ -51,4 +53,9 @@ export class InputCommonComponent implements ControlValueAccessor {
     this.value = input.value;
     this.onChange(this.value);
   }
+
+  get isClassDynamic(): boolean {
+      return this.classD != null 
+  }
+  
 }

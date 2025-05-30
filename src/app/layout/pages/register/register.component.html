@@ -17,6 +17,11 @@
           [formGroup]="registerForm"
           (ngSubmit)="onSubmit()"
         >
+          <span
+            style="display: flex; position: relative; color: red"
+            *ngIf="isCpfInvalid"
+            >Cpf inválido!</span
+          >
           <app-input-common
             class="input-register"
             id="email"
@@ -31,26 +36,23 @@
             placeholder="Nome Completo"
             formControlName="completeName"
           ></app-input-common>
-
-          <span *ngIf="isCpfInvalid || lenghtCpfIsMin">Cpf inválido!</span>
           <app-input-common
             class="input-register"
-            [ngClass]="{
-              'input-register-valid': !isCpfInvalid && lenghtCpfIsMax
-            }"
+            [classD]="!isCpfInvalid ? 'in-common' : 'in-common-fails'"
             id="document"
             type="text"
             placeholder="CPF"
             formControlName="document"
             mask="000.000.000-00"
           ></app-input-common>
-          
+
           <app-input-common
             class="input-register"
             id="celphone"
             type="text"
             placeholder="(11) Celular"
             formControlName="celphone"
+            mask="(00) 000000000"
           ></app-input-common>
 
           <button

@@ -1,3 +1,13 @@
+.in-common-fails {
+  font-size: medium;
+  padding-left: 1rem;
+  width: 25rem;
+  height: 2.54rem;
+  border-radius: 0.375rem;
+  border: 3px solid #ff0000;
+  outline: none;
+  transition: border 0.1s ease, box-shadow 0.1s ease;
+}
 .in-common {
   font-size: medium;
   padding-left: 1rem;

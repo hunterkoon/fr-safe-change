@@ -25,7 +25,6 @@ import { CommonModule } from '@angular/common';
 export class RegisterComponent {
   constructor() {
     this.registerForm.valueChanges.subscribe((value) => {
-      console.log(' ' + value.document);
     });
   }
 
@@ -33,40 +32,24 @@ export class RegisterComponent {
   submitted: boolean = false;
 
   registerForm = new FormGroup({
-    emailClient: new FormControl('', [Validators.required, Validators.email]),
-    completeName: new FormControl('', [Validators.required]),
-    document: new FormControl('', [
-      Validators.required,
-      (control) => cpfValidator(control),
-    ]),
-    celphone: new FormControl('', [Validators.required]),
-    cep: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
-    neighborhood: new FormControl('', [Validators.required]),
-    street: new FormControl('', [Validators.required]),
-    streetNumber: new FormControl('', [Validators.required]),
-    terms: new FormControl('', [Validators.required]),
-    acceptOptin: new FormControl('', [Validators.required]),
+    emailClient: new FormControl('', [ Validators.email]),
+    completeName: new FormControl('', []),
+    document: new FormControl('', [(control) => cpfValidator(control)]),
+    celphone: new FormControl('', []),
+    cep: new FormControl('', []),
+    city: new FormControl('', []),
+    neighborhood: new FormControl('', []),
+    street: new FormControl('', []),
+    streetNumber: new FormControl('', []),
+    terms: new FormControl('', []),
+    acceptOptin: new FormControl('', []),
   });
 
-get isCpfInvalid(): boolean {
-  const doc = this.registerForm.get('document');
-  const value = doc?.value ?? '';
-  return !!doc?.errors?.['cpfInvalido'] && value.length >= 14;
-}
-
-get lenghtCpfIsMax():boolean{
-  const doc = this.registerForm.get('document');
-  const value = doc?.value ?? '';
-  return value.length >= 14;
-}
-
-get lenghtCpfIsMin():boolean{
-  const doc = this.registerForm.get('document');
-  const value = doc?.value ?? '';
-  return value.length > 0 && value.length <= 13;
-}
-
+  get isCpfInvalid(): boolean {
+    const doc = this.registerForm.get('document');
+    const value = doc?.value ?? '';
+    return !!doc?.errors?.['cpfInvalido'] && value.length >= 14;
+  }
   onSubmit() {
     this.submitted = true;
     console.log('Email:', this.registerForm.value.emailClient);

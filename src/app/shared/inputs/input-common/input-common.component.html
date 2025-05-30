@@ -1,6 +1,6 @@
 <label [for]="name">{{ name }}</label>
 <input
-  class="in-common"
+  [ngClass]="isClassDynamic ? classD : 'in-common'"
   [id]="id"
   [type]="type"
   [placeholder]="placeholder"

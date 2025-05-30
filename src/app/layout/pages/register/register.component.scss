@@ -4,7 +4,7 @@
 
 .input-register-valid {
   opacity: 80%;
-  background-color: aquamarine
+  background-color: aquamarine;
 }
 
 .register-button {
@@ -43,6 +43,7 @@
 .input-register {
   display: flex;
   padding-top: 0.5rem;
+  width: 100%;
 }
 
 .text-enter-register {
@@ -86,10 +87,6 @@
   gap: 10px;
 }
 
-.register-insurance > div > p {
-  font-size: medium;
-}
-
 .register-content {
   display: flex;
   flex-direction: column;
@@ -101,6 +98,11 @@
     display: flex;
     flex-direction: column;
     padding: 1rem;
+  }
+  .form-register {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   .register-legal-text {
@@ -130,7 +132,5 @@
     justify-content: center;
   }
 
-  .input-register {
-    width: 70%;
-  }
+
 }

@@ -8,7 +8,6 @@ export function cpfValidator(control: AbstractControl): ValidationErrors | null 
   }
 
   const calcCheckDigit = (cpf: string, factor: number): number => {
-    console.log("passou aqui")
     let total = 0;
     for (let i = 0; i < factor - 1; i++) {
       total += Number(cpf.charAt(i)) * (factor - i);
