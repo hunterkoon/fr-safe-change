@@ -17,11 +17,11 @@
           [formGroup]="registerForm"
           (ngSubmit)="onSubmit()"
         >
-          <span
-            style="display: flex; position: relative; color: red"
-            *ngIf="isCpfInvalid"
-            >Cpf inválido!</span
-          >
+          <app-message
+            *ngIf="hasErrorInForm"
+            [messages]="messageError"
+          ></app-message>
+
           <app-input-common
             class="input-register"
             id="email"
@@ -45,20 +45,19 @@
             formControlName="document"
             mask="000.000.000-00"
           ></app-input-common>
-
           <app-input-common
             class="input-register"
             id="celphone"
             type="text"
-            placeholder="(11) Celular"
+            placeholder="(11) 000000000"
             formControlName="celphone"
             mask="(00) 000000000"
           ></app-input-common>
 
           <button
             class="register-button"
-            type="submit"
-            [disabled]="registerForm.get('emailClient')?.invalid"
+            (ngSubmit)="onSubmit()"
+            [formGroup]="registerForm"
           >
             OK
           </button>
