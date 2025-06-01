@@ -33,14 +33,7 @@ export class RegisterComponent {
 
   constructor() {
     this.registerForm.valueChanges.subscribe(() => {
-      this.hasErrorInForm = false;
-      this.messageError = [];
-      this.completeNameNormalized = [];
-
-      this.emailClient();
-      this.completeName();
-      this.document();
-      this.cellPhone();
+      this.validationFieldsForm();
     });
   }
 
@@ -58,15 +51,27 @@ export class RegisterComponent {
     acceptOptin: new FormControl('', []),
   });
 
+  private validationFieldsForm() {
+    this.hasErrorInForm = false;
+    this.messageError = [];
+
+    this.emailClient();
+    this.completeName();
+    this.document();
+    this.cellPhone();
+  }
+
   private cellPhone() {
     const cellCtrl = this.registerForm.get('celphone');
+    this.nullOrUndefined(cellCtrl?.value, 'Preencha o Campo Celular');
     if (cellCtrl?.invalid && (cellCtrl.dirty || cellCtrl.touched)) {
     }
   }
 
   private document() {
     const cpfCtrl = this.registerForm.get('document');
-    if (cpfCtrl?.value && cpfCtrl?.invalid && cpfCtrl.value?.length > 0 ) {
+    this.nullOrUndefined(cpfCtrl?.value, 'Preencha o Campo CPF');
+    if (cpfCtrl?.value && cpfCtrl?.invalid && cpfCtrl.value?.length > 0) {
       if (cpfCtrl.errors?.['cpfInvalido']) {
         this.messageError.push('CPF inválido!');
       }
@@ -75,19 +80,18 @@ export class RegisterComponent {
 
   private emailClient() {
     const emailCtrl = this.registerForm.get('emailClient');
-    if (emailCtrl?.invalid && (emailCtrl.dirty || emailCtrl.touched)) {
-      if (
-        emailCtrl.value &&
-        emailCtrl.value?.length > 5 &&
-        emailCtrl.errors?.['email']
-      ) {
+    this.nullOrUndefined(emailCtrl?.value, `Preencha o campo E-mail`);
+    if (emailCtrl?.invalid) {
+      if (emailCtrl.value && emailCtrl.errors?.['email']) {
         this.messageError.push('E-mail inválido!');
       }
     }
   }
 
   private completeName() {
+    this.completeNameNormalized = [];
     const nameCtrl = this.registerForm.get('completeName');
+    this.nullOrUndefined(nameCtrl?.value, 'Preencha o Campo Nome Completo');
     if (nameCtrl?.value) {
       let listOfnames: string[] = nameCtrl.value.trim().split(' ');
       for (let pos in listOfnames) {
@@ -103,20 +107,22 @@ export class RegisterComponent {
     }
   }
 
-  putMessage(error: string): void {
-    this.messageError.push(error);
+  private nullOrUndefined(value: string | null | undefined, message: string) {
+    if (value == null || value == undefined || value == '') {
+      this.messageError.push(message);
+    }
   }
-
   get isCpfInvalid(): boolean {
     const doc = this.registerForm.get('document');
     const value = doc?.value ?? '';
     return !!doc?.errors?.['cpfInvalido'] && value.length >= 14;
   }
-  
+
   onSubmit() {
-    console.log(this.hasErrorInForm)
-      if(this.messageError.length > 0){
-          this.hasErrorInForm = true;
-      }
+    this.validationFieldsForm();
+    console.log(this.hasErrorInForm);
+    if (this.messageError.length > 0) {
+      this.hasErrorInForm = true;
+    }
   }
 }
