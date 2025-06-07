@@ -30,6 +30,7 @@ export class RegisterComponent {
   imageSourcePage: string = REGISTER_IMG;
   submitted: boolean = false;
   hasErrorInForm: boolean = false;
+  submeted: boolean = false;
 
   constructor() {
     this.registerForm.valueChanges.subscribe(() => {
@@ -42,29 +43,37 @@ export class RegisterComponent {
     completeName: new FormControl('', []),
     document: new FormControl('', [(control) => cpfValidator(control)]),
     celphone: new FormControl('', []),
-    cep: new FormControl('', []),
-    city: new FormControl('', []),
-    neighborhood: new FormControl('', []),
-    street: new FormControl('', []),
-    streetNumber: new FormControl('', []),
-    terms: new FormControl('', []),
-    acceptOptin: new FormControl('', []),
+    // cep: new FormControl('', []),
+    // city: new FormControl('', []),
+    // neighborhood: new FormControl('', []),
+    // street: new FormControl('', []),
+    // streetNumber: new FormControl('', []),
+    // terms: new FormControl('', []),
+    // acceptOptin: new FormControl('', []),
   });
 
   private validationFieldsForm() {
     this.hasErrorInForm = false;
     this.messageError = [];
-
     this.emailClient();
     this.completeName();
     this.document();
     this.cellPhone();
+    this.giveListError(this.messageError);
+  }
+
+  private giveListError(listOfMessages: string[]): void {
+    listOfMessages.length > 0 ? (this.hasErrorInForm = true) : null;
   }
 
   private cellPhone() {
     const cellCtrl = this.registerForm.get('celphone');
     this.nullOrUndefined(cellCtrl?.value, 'Preencha o Campo Celular');
-    if (cellCtrl?.invalid && (cellCtrl.dirty || cellCtrl.touched)) {
+    if (!!cellCtrl?.value && cellCtrl?.value?.length < 14) {
+      this.nullOrUndefined(
+        null,
+        'Preencha o Campo celular com todos os digitos!'
+      );
     }
   }
 
@@ -108,7 +117,7 @@ export class RegisterComponent {
   }
 
   private nullOrUndefined(value: string | null | undefined, message: string) {
-    if (value == null || value == undefined || value == '') {
+    if (!value) {
       this.messageError.push(message);
     }
   }
@@ -118,11 +127,29 @@ export class RegisterComponent {
     return !!doc?.errors?.['cpfInvalido'] && value.length >= 14;
   }
 
-  onSubmit() {
-    this.validationFieldsForm();
-    console.log(this.hasErrorInForm);
-    if (this.messageError.length > 0) {
-      this.hasErrorInForm = true;
+  get hasInputEmptyInForm(): boolean {
+    for (const [key, value] of Object.entries(this.registerForm.value)) {
+      if (!value) {
+        return !false;
+      }
     }
+    return !true;
+  }
+
+  get hasErrorOrInvalidForm(): boolean {
+    if (!this.hasInputEmptyInForm && !this.hasErrorInForm) {
+      return false;
+    }
+    return true;
+  }
+
+  private showContentForm():void {
+    console.log(this.registerForm.getRawValue())
+  }
+
+  onSubmit() {
+    this.submeted = true;
+    this.validationFieldsForm();
+    this.showContentForm();
   }
 }

@@ -11,14 +11,13 @@
         >
           Registre-se
         </h1>
-
         <form
           class="form-register"
           [formGroup]="registerForm"
           (ngSubmit)="onSubmit()"
         >
           <app-message
-            *ngIf="hasErrorInForm"
+            *ngIf="hasErrorInForm && submeted"
             [messages]="messageError"
           ></app-message>
 
@@ -49,18 +48,24 @@
             class="input-register"
             id="celphone"
             type="text"
-            placeholder="(11) 000000000"
+            placeholder="(11) 900000000"
             formControlName="celphone"
-            mask="(00) 000000000"
+            mask="(00) 9000000000"
           ></app-input-common>
 
           <button
-            class="register-button"
+            [ngClass]="
+              hasErrorOrInvalidForm
+                ? 'register-button-deactived'
+                : 'register-button'
+            "
             (ngSubmit)="onSubmit()"
             [formGroup]="registerForm"
+            [disabled]="hasErrorOrInvalidForm"
           >
             OK
           </button>
+          <!--[disabled]="hasErrorOrInvalidForm" -->
         </form>
       </div>
     </div>
