@@ -1,4 +1,5 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { distinctUntilChanged, takeWhile } from 'rxjs/operators';
 import { REGISTER_IMG } from '../../../shared/utils/constants';
 import { PresentationComponent } from '../../../shared/presentation/presentation.component';
 import {
@@ -11,6 +12,9 @@ import { InputCommonComponent } from '../../../shared/inputs/input-common/input-
 import { cpfValidator } from '../../../shared/utils/documentValidator';
 import { CommonModule } from '@angular/common';
 import { MessageComponent } from '../../../shared/message/message/message.component';
+import { HttpService } from '../../../core/http/http.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CepDto } from '../../../domain/cep';
 
 @Component({
   selector: 'app-register',
@@ -24,33 +28,20 @@ import { MessageComponent } from '../../../shared/message/message/message.compon
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
   completeNameNormalized: string[] = [];
   messageError: string[] = ['Preencha o formulário'];
   imageSourcePage: string = REGISTER_IMG;
   submitted: boolean = false;
   hasErrorInForm: boolean = false;
   submeted: boolean = false;
+  registerForm!: FormGroup;
 
-  constructor() {
-    this.registerForm.valueChanges.subscribe(() => {
-      this.validationFieldsForm();
-    });
+  constructor(private httpsService: HttpService) {
+    // this.registerForm.valueChanges.subscribe(() => {
+    //   this.validationFieldsForm();
+    // });
   }
-
-  registerForm = new FormGroup({
-    emailClient: new FormControl('', [Validators.email]),
-    completeName: new FormControl('', []),
-    document: new FormControl('', [(control) => cpfValidator(control)]),
-    celphone: new FormControl('', []),
-    // cep: new FormControl('', []),
-    // city: new FormControl('', []),
-    // neighborhood: new FormControl('', []),
-    // street: new FormControl('', []),
-    // streetNumber: new FormControl('', []),
-    // terms: new FormControl('', []),
-    // acceptOptin: new FormControl('', []),
-  });
 
   private validationFieldsForm() {
     this.hasErrorInForm = false;
@@ -62,8 +53,54 @@ export class RegisterComponent {
     this.giveListError(this.messageError);
   }
 
+  ngOnInit(): void {
+    this.registerForm = new FormGroup({
+      emailClient: new FormControl('', [Validators.email]),
+      completeName: new FormControl('', []),
+      document: new FormControl('', [(control) => cpfValidator(control)]),
+      celphone: new FormControl('', []),
+      cep: new FormControl('', []),
+      city: new FormControl('', []),
+      neighborhood: new FormControl('', []),
+      street: new FormControl('', []),
+      streetNumber: new FormControl('', []),
+    });
+
+    this.registerForm.valueChanges.subscribe(() => {
+      this.validationFieldsForm();
+    });
+
+    this.registerForm
+      .get('cep')
+      ?.valueChanges.pipe(distinctUntilChanged())
+      .subscribe((data) => {
+        this.cep(data);
+      });
+  }
+
+  private getCep(cep: string): void {
+    console.log('meu cep ' + cep);
+    this.httpsService
+      .get<CepDto>(
+        `https://brasilapi.com.br/api/cep/v1/${
+          this.registerForm.get('cep')?.value
+        }`
+      )
+      .subscribe((data) => {
+          this.registerForm.get('street')?.setValue(data.street);
+          this.registerForm.get('neighborhood')?.setValue(data.neighborhood);
+          this.registerForm.get('city')?.setValue(data.city);
+      });
+  }
+
   private giveListError(listOfMessages: string[]): void {
     listOfMessages.length > 0 ? (this.hasErrorInForm = true) : null;
+  }
+
+  private cep(cep: string) {
+    if (cep?.length == 9) {
+      this.getCep(cep);
+    }
   }
 
   private cellPhone() {
@@ -143,8 +180,8 @@ export class RegisterComponent {
     return true;
   }
 
-  private showContentForm():void {
-    console.log(this.registerForm.getRawValue())
+  private showContentForm(): void {
+    console.log(this.registerForm.getRawValue());
   }
 
   onSubmit() {

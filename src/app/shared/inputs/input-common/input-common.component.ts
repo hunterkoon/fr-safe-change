@@ -3,7 +3,6 @@ import { Component, Input, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { NgxMaskDirective } from 'ngx-mask';
 
-
 @Component({
   selector: 'app-input-common',
   standalone: true,
@@ -15,8 +14,8 @@ import { NgxMaskDirective } from 'ngx-mask';
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => InputCommonComponent),
       multi: true,
-    }
-  ]
+    },
+  ],
 })
 export class InputCommonComponent implements ControlValueAccessor {
   @Input() id: string = '';
@@ -26,6 +25,7 @@ export class InputCommonComponent implements ControlValueAccessor {
   @Input() placeholder: string = '';
   @Input() mask: string = '';
   @Input() classD: any = null;
+  @Input() deactivated: boolean = false;
 
   value: string = '';
   isDisabled = false;
@@ -55,7 +55,6 @@ export class InputCommonComponent implements ControlValueAccessor {
   }
 
   get isClassDynamic(): boolean {
-      return this.classD != null 
+    return this.classD != null;
   }
-  
 }

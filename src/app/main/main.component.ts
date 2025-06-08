@@ -10,11 +10,12 @@ import { ChangeDetectorRef, Component, AfterViewInit } from '@angular/core';
 import { HeaderComponent } from '../layout/header/header.component';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, RouterOutlet],
+  imports: [HeaderComponent, FooterComponent, RouterOutlet , HttpClientModule],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss'],
   animations: [

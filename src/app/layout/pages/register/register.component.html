@@ -48,9 +48,48 @@
             class="input-register"
             id="celphone"
             type="text"
-            placeholder="(11) 900000000"
+            placeholder="Celular"
             formControlName="celphone"
             mask="(00) 9000000000"
+          ></app-input-common>
+          <app-input-common
+            class="input-register"
+            id="cep"
+            type="text"
+            placeholder="CEP"
+            formControlName="cep"
+            mask="00000-000"
+          ></app-input-common>
+          <app-input-common
+            class="input-register"
+            id="city"
+            type="text"
+            placeholder="Cidade"
+            formControlName="city"
+            [deactivated]="true"
+          ></app-input-common>
+          <app-input-common
+            class="input-register"
+            id="neighborhood"
+            type="text"
+            placeholder="Bairro"
+            formControlName="neighborhood"
+            [deactivated]="true"
+          ></app-input-common>
+          <app-input-common
+            class="input-register"
+            id="street"
+            type="text"
+            placeholder="Rua"
+            formControlName="street"
+            [deactivated]="true"
+          ></app-input-common>
+          <app-input-common
+            class="input-register"
+            id="streetNumber"
+            type="text"
+            placeholder="Numero"
+            formControlName="streetNumber"
           ></app-input-common>
 
           <button
